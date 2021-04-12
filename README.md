@@ -1,62 +1,47 @@
-# MyReads Project
+This project is my implementation of MyReads app which is the final assessment project for the
+Udacity's React Fundamentals course, part of the [Frontend Nanodegree Advanced Program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011).
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+MyReads is a bookshelf app that allows the user to select and categorize books they have read, are currently reading, or want to read.
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+## Getting Started
 
-## Get started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-To get started developing right away:
+### Prerequisites
 
-* install all project dependencies with `yarn install`
-* start the development server with `yarn start`
+The project can be built with npm or yarn, so choose one of the approach bellow in case you don't have any installed on your system.
 
-## Backend Server
+* **Npm** is distributed with Node.js which means that when you download Node.js, you automatically get npm installed on your computer. [Download Node.js](https://nodejs.org/en/download/)
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+* **Yarn** is a package manager built by Facebook Team and seems to be faster than npm in general.  [Download Yarn](https://yarnpkg.com/en/docs/install)
 
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
+### Installing
 
-### `getAll`
+To download the project follow the instructions bellow:
 
-Method Signature:
-
-```js
-getAll()
+```
+git clone https://github.com/hazem-sabry/reactnd-project-myreads-starter
+cd reactnd-project-myreads-starter
 ```
 
-* Returns a Promise which resolves to a JSON object containing a collection of book objects.
-* This collection represents the books currently in the bookshelves in your app.
+Then install dependencies and run:
 
-### `update`
+```
+yarn install
+yarn start
+```
+Or 
 
-Method Signature:
-
-```js
-update(book, shelf)
+```
+npm install
+npm run start
 ```
 
-* book: `<Object>` containing at minimum an `id` attribute
-* shelf: `<String>` contains one of ["wantToRead", "currentlyReading", "read"]  
-* Returns a Promise which resolves to a JSON object containing the response data of the POST request
+## Versions
 
-### `search`
+v1.0
+* Default project implementation
 
-Method Signature:
+## Authors
 
-```js
-search(query)
-```
-
-* query: `<String>`
-* Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
-* These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
-
-## Important
-The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
-
-## Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+* [Hazem Sabry](https://github.com/hazem-sabry)

@@ -1,16 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
+// External depedencies
+import React from 'react';
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, mount, configure } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 
-/** 
- This course is not designed to teach Test Driven Development. 
- Feel free to use this file to test your application, but it 
- is not required.
-**/
+// Our depedencies
+import App from './App.jsx';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
+configure({adapter: new Adapter()});
+
+describe('View: <App />', () => {
+
+    it('renders without crashing', () => {
+        expect(shallow(<App />))
+    });
+
+    it('mounts without crashing', () => {
+        expect(mount(<MemoryRouter><App /></MemoryRouter>))
+    });    
 })
-
-
