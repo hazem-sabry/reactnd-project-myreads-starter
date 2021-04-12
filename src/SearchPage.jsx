@@ -12,7 +12,7 @@ class SearchPage extends Component {
 
     state = {
         query: '',
-        books: [],
+        books: []
     }
 
     updateQuery = (query) => {
