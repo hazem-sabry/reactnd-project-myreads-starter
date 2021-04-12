@@ -7,7 +7,7 @@ function Book({book, onUpdateBookStatus}) {
         <li>
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks.thumbnail ? book.imageLinks.thumbnail : bookThumbnailPlaceholder}")` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks ? book.imageLinks.thumbnail : bookThumbnailPlaceholder}")` }}></div>
                     <div className="book-shelf-changer">
                         <select value={book.shelf} onChange={(e) => onUpdateBookStatus(book, e.currentTarget.value)}>
                             <option value="move" disabled>Move to...</option>
