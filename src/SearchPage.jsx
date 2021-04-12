@@ -12,30 +12,48 @@ class SearchPage extends Component {
 
     state = {
         query: '',
-        books: []
+        allBooks: [],
+    }
+
+    mapBooks = (searchBooks) => {
+        
+        if (!searchBooks.length) {
+            this.setState( () => (
+                {
+                    query: '',
+                    allBooks: [],
+                }
+            ));
+        } else {
+            const { books } = this.props;
+            searchBooks.forEach(item => {
+                const myBook = books.find(elem => elem.id === item.id)
+                if(myBook) item.shelf = myBook.shelf
+            })
+
+            this.setState( () => (
+                { allBooks: searchBooks }
+            ));
+        }
     }
 
     updateQuery = (query) => {
         if (!query) {
-            this.setState({query: '', books: []})
+            this.mapBooks([]);
             return;
         }
         this.setState({ query: query.trim() })
         try {
             BooksAPI.search(query).then((books) => {
-                this.setState(() => ({ 
-                    books,
-                }))
+                this.mapBooks(books);
             })
         } catch (error) {
-            this.setState( () => (
-                { books: [] }
-            ));
+            this.mapBooks([]);
             console.error(error);
         }
     }
     render() {
-        const { books, query } = this.state;
+        const { allBooks, query } = this.state;
         const { onUpdateBookStatus } = this.props;
         return (
             <div className="search-books">
@@ -51,12 +69,12 @@ class SearchPage extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    { !!books.length && <ol className="books-grid">
-                        { books.map(book => (
+                    { !!allBooks.length && <ol className="books-grid">
+                        { allBooks.map(book => (
                             <Book book={book} onUpdateBookStatus={onUpdateBookStatus} key={book.id} />
                         ))}
                     </ol> }
-                    { !books.length && <p>Search for new books to add to your reading list</p> }
+                    { !allBooks.length && <p>Search for new books to add to your reading list</p> }
                 </div>
             </div>
         )

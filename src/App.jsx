@@ -55,7 +55,7 @@ class BooksApp extends React.Component {
   }
 
   render() {
-    const { currentlyReading, wantToRead, read } = this.state;
+    const { books, currentlyReading, wantToRead, read } = this.state;
 
     return (
       <BrowserRouter>
@@ -93,7 +93,7 @@ class BooksApp extends React.Component {
             )}
           />
           <Route path="/search" render={() => (
-              <SearchPage onUpdateBookStatus={this.updateBookStatus} />
+              <SearchPage books={books} onUpdateBookStatus={this.updateBookStatus} />
             )}
           />
         </div>
